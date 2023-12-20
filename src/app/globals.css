@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+section.hero{
+  @apply grid;
+  grid-template-columns: .7fr .6fr;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+input[type='email'],
+input[type='password'],
+input[type='text']{
+  @apply block w-full my-2 rounded-md;
+  @apply  border p-2 border-gray-400 bg-gray-200;
+}
+
+input[type='email']:disabled,
+input[type='password']:disabled,
+input[type='text']:disabled{
+  @apply bg-gray-300 cursor-not-allowed 
+}
+
+button{
+  @apply block w-full text-gray-700 font-semibold;
+  @apply border border-gray-400 rounded-md px-6 py-2
+}
+
+button[type='submit'], .submit{
+  @apply border-0 bg-primary text-white;
+}
+
+button[type='submit']:disabled{
+  @apply bg-gray-300 cursor-not-allowed;
+}
+
+.box {
+  -webkit-animation: spin 30s linear infinite;
+  animation: spin 30s linear infinite; /* Add non-prefixed version for wider browser support */
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); /* Add non-prefixed version for wider browser support */
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
